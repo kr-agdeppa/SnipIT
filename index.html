@@ -7,6 +7,7 @@
   <title>SnipIT</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+
   <style>
     pre {
       background: #f4f4f4;
@@ -34,27 +35,36 @@
       -webkit-background-clip: text;
     }
 
+    form {
+      background: #526D82;
+      border: 50px solid #526D82;
+      border-radius: 30px;
+    }
+    li {
+      margin: 10px;
+    }
   </style>
 </head>
-<body>
+
+<body style="background-color:#27374D;">
   <div class="container">
     <h1 class="text-center">SnipIT</h1>
     <form id="todo-form">
       <div class="form-group">
-        <label for="todo-title"><b>Title:</b></label>
+        <label for="todo-title"><b>TITLE:</b></label>
         <input type="text" id="todo-title" class="form-control" placeholder="Snippet" required>
       </div>
       <div class="form-group">
-        <label for="todo-description"><b>Code:</b></label>
+        <label for="todo-description"><b>CODE:</b></label>
         <textarea id="todo-description" class="form-control" rows="5" placeholder="console.log('Hello World')" required></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Add Code Snippet</button>
     </form>
-    <hr>
+    <br>
     <ul id="todo-list" class="list-group"></ul>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js"> </script>
 </body>
 
 </html>
