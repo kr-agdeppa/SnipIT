@@ -1,5 +1,5 @@
 // Retrieve codesnippets from local storage or initialize an empty array
-let codesnippets = JSON.parse(localStorage.getItem('codesnippets')) || []; codesnippets
+let codesnippets = JSON.parse(localStorage.getItem('codesnippets')) || [];
 
 // Function to save todos to local storage
 function saveSnippets() {
@@ -8,8 +8,8 @@ function saveSnippets() {
 
 // Function to render codesnippets in the UI
 function renderSnippets() {
-  const todoList = document.getElementById('todo-list');
-  todoList.innerHTML = '';
+  const snippetList = document.getElementById('todo-list');
+  snippetList.innerHTML = '';
 
   codesnippets.forEach((todo, index) => {
     const listItem = document.createElement('li');
@@ -49,7 +49,7 @@ function renderSnippets() {
     listItem.appendChild(copyButton);
     
 
-    todoList.appendChild(listItem);
+    snippetList.appendChild(listItem);
   });
 }
 
