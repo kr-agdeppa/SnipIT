@@ -1,11 +1,6 @@
 // Retrieve codesnippets from local storage or initialize an empty array
 let codesnippets = JSON.parse(localStorage.getItem('codesnippets')) || [];
 
-// Function to save todos to local storage
-function saveSnippets() {
-  localStorage.setItem('codesnippets', JSON.stringify(codesnippets));
-}
-
 // Function to render codesnippets in the UI
 function renderSnippets() {
   const snippetList = document.getElementById('todo-list');
@@ -29,14 +24,14 @@ function renderSnippets() {
     });
 
     const editButton = document.createElement('button');
-    editButton.className = 'btn btn-info float-right';
+    editButton.className = 'btn btn-warning float-right';
     editButton.textContent = 'Edit';
     editButton.addEventListener('click', () => {
       editTodo(index);
     });
 
     const copyButton = document.createElement('button');
-    copyButton.className = 'btn btn-dark';
+    copyButton.className = 'btn btn-info';
     copyButton.textContent = 'Copy';
     copyButton.addEventListener('click', () => {
       copyDesription(index);
@@ -47,23 +42,27 @@ function renderSnippets() {
     listItem.appendChild(deleteButton);
     listItem.appendChild(editButton);
     listItem.appendChild(copyButton);
-    
 
     snippetList.appendChild(listItem);
   });
 }
 
+// Function to save todos to local storage
+function saveSnippets() {
+  localStorage.setItem('codesnippets', JSON.stringify(codesnippets));
+}
+
 // Function to add a new todo
 function addTodo() {
-  const titleInput = document.getElementById('todo-title');
-  const code_Input = document.getElementById('todo-description');
+  const titleInput = document.getElementById('snippet-title');
+  const code_Input = document.getElementById('code_shippet');
 
-  const todo = {
+  const current_snippet = {
     title: titleInput.value,
     code_: code_Input.value,
   };
 
-  codesnippets.push(todo);
+  codesnippets.push(current_snippet);
   saveSnippets();
   renderSnippets();
 
@@ -72,8 +71,8 @@ function addTodo() {
 }
 
 function copyDesription(index) {
-  const todo = codesnippets[index];
-  const snippet = todo['code_'];
+  const current_snippet = codesnippets[index];
+  const snippet = current_snippet['code_'];
 
   navigator.clipboard.writeText(snippet);
 
@@ -91,12 +90,12 @@ function deleteTodo(index) {
 
 // Function to edit a todo
 function editTodo(index) {
-  const todo = codesnippets[index];
-  const titleInput = document.getElementById('todo-title');
-  const code_Input = document.getElementById('todo-description');
+  const current_snippet = codesnippets[index];
+  const titleInput = document.getElementById('snippet-title');
+  const code_Input = document.getElementById('code_shippet');
 
-  titleInput.value = todo.title;
-  code_Input.value = todo.code_;
+  titleInput.value = current_snippet['title'];
+  code_Input.value = current_snippet['code_'];
 
   codesnippets.splice(index, 1);
   saveSnippets();
