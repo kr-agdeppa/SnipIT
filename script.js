@@ -3,7 +3,7 @@ let codesnippets = JSON.parse(localStorage.getItem('codesnippets')) || [];
 
 // Function to render codesnippets in the UI
 function renderSnippets() {
-  const snippetList = document.getElementById('todo-list');
+  const snippetList = document.getElementById('snippet-list');
   snippetList.innerHTML = '';
 
   codesnippets.forEach((code, index) => {
@@ -103,7 +103,7 @@ function editSnippet(index) {
 }
 
 // Event listener for form submission
-document.getElementById('todo-form').addEventListener('submit', (e) => {
+document.getElementById('snippet-form').addEventListener('submit', (e) => {
   e.preventDefault();
   addSnippet();
 });
