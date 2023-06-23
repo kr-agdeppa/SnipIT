@@ -6,28 +6,28 @@ function renderSnippets() {
   const snippetList = document.getElementById('todo-list');
   snippetList.innerHTML = '';
 
-  codesnippets.forEach((todo, index) => {
+  codesnippets.forEach((code, index) => {
     const listItem = document.createElement('li');
     listItem.className = 'list-group-item';
 
     const title = document.createElement('h5');
-    title.textContent = todo.title;
+    title.textContent = code.title;
 
     const code_ = document.createElement('pre');
-    code_.textContent = todo.code_;
+    code_.textContent = code.code_;
 
     const deleteButton = document.createElement('button');
     deleteButton.className = 'btn btn-danger float-right ml-2';
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener('click', () => {
-      deleteTodo(index);
+      deleteSnippet(index);
     });
 
     const editButton = document.createElement('button');
     editButton.className = 'btn btn-warning float-right';
     editButton.textContent = 'Edit';
     editButton.addEventListener('click', () => {
-      editTodo(index);
+      editSnippet(index);
     });
 
     const copyButton = document.createElement('button');
@@ -47,13 +47,13 @@ function renderSnippets() {
   });
 }
 
-// Function to save todos to local storage
+// Function to save snippet to local storage
 function saveSnippets() {
   localStorage.setItem('codesnippets', JSON.stringify(codesnippets));
 }
 
-// Function to add a new todo
-function addTodo() {
+// Function to add a new snippet
+function addSnippet() {
   const titleInput = document.getElementById('snippet-title');
   const code_Input = document.getElementById('code_shippet');
 
@@ -81,15 +81,15 @@ function copyDesription(index) {
 
 }
 
-// Function to delete a todo
-function deleteTodo(index) {
+// Function to delete a snippet
+function deleteSnippet(index) {
   codesnippets.splice(index, 1);
   saveSnippets();
   renderSnippets();
 }
 
-// Function to edit a todo
-function editTodo(index) {
+// Function to edit a snippet
+function editSnippet(index) {
   const current_snippet = codesnippets[index];
   const titleInput = document.getElementById('snippet-title');
   const code_Input = document.getElementById('code_shippet');
@@ -105,7 +105,7 @@ function editTodo(index) {
 // Event listener for form submission
 document.getElementById('todo-form').addEventListener('submit', (e) => {
   e.preventDefault();
-  addTodo();
+  addSnippet();
 });
 
 
